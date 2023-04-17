@@ -1,9 +1,5 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
-<p align="center">
-[<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>](https://s3.amazonaws.com/gupy5/production/companies/26702/images/jobs/2537199/20220705010027980_socialPicture.png)
-</p>
-
 # Nome do projeto
 
 ## Nome do grupo
