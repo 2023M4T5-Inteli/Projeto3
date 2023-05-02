@@ -19,18 +19,6 @@ Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solu
 
 ## 📁 Estrutura de pastas
 
-```
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
-
-Supondo que você é da Turma 4 e Projeto 5, substitua:
-
-T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Predictive_Model_Document.pdf
-por
-T4_G5_V01_Predictive_Model_Document.pdf
-
-Faça o mesmo para a documentação em formato DOCX.
-```
-
 |--> documentos<br>
   &emsp;| --> outros <br>
   &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Predictive_Model_Document.pdf<br>
