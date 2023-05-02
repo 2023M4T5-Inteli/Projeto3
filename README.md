@@ -44,16 +44,17 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 - <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
-- <b>documentos</b>: aqui estarão todos os documentos do projeto. Há também uma pasta denominada <b>outros</b> onde estão presentes aqueles documentos complementares.
+- <b>documentos</b>: aqui estão todos os documentos do projeto, incluindo o manual de instruções. Há também uma pasta denominada outros onde estão presentes outros documentos complementares.
 
-- <b>notebooks</b>: todos os Jupyter Notebooks criados na plataforma Colab para desenvolvimento do projeto.
+- <b>src</b>: todo o código fonte criado para o desenvolvimento do projeto, incluindo os blocos de código do circuito, backend e frontend se aplicáveis.
 
 ## 💻 Execução dos projetos
 
-Todos os notebooks do projeto tem o resultado de execução das células visíveis no próprio repositório Github.
+Um guia para a execução desse projeto pode ser encontrado no conteúdo do documento "Manual de Instruções", dentro da pasta "documentos".
 
-Para replicação (reexecução dos códigos), o botão `Open in Colab` disponível na página do arquivo neste repositório do Github.
-> Note que sem salvar uma cópia do notebook no seu Google Drive, não é possível salvar as alterações realizadas no arquivo.
+Se preferir, também é possível acessá-lo a partir do seguinte link:
+
+ <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Manual de Intruções</a> 
 
 ## 🗃 Histórico de lançamentos
 
