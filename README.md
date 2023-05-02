@@ -2,16 +2,16 @@
 
 # Nome do projeto
 
-## Nome do grupo
+## Rastreando
 
 ## Integrantes: 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 1</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 2</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 3</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 4</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 5</a>
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 6</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Nome do integrante 7</a>
+- <a href="https://www.linkedin.com/in/celine-souza-1a38aa225/">Celine Souza</a>
+- <a href="https://www.linkedin.com/in/emely-tavares-3575ba24a/">Emely Tavares</a>
+- <a href="https://www.linkedin.com/in/enya-oliveira-636566240/">Enya Oliveira Arruda</a> 
+- <a href="https://www.linkedin.com/in/estherhikari/">Esther Hikari</a> 
+- <a href="https://www.linkedin.com/in/guilherme-novaes-lima">Guilherme Novaes Lima</a>
+- <a href="https://www.linkedin.com/in/mariana-g%C3%B6rresen-b03059210/">Mariana Görresen</a> 
+- <a href=" https://www.linkedin.com/in/renan-ribeiro-31a205247/"Renan Ribeiro</a>
 
 ## 📝 Descrição
 
@@ -67,8 +67,8 @@ Para replicação (reexecução dos códigos), o botão `Open in Colab` disponí
 * 0.1.0 - 10/01/2022
     * O primeiro lançamento adequado
     * Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* 0.0.1 - 29/05/2023
+    * Primeira submissão da documentação
 
 ## 📋 Licença/License
 
