@@ -11,8 +11,8 @@
 - <a href="https://www.linkedin.com/in/estherhikari/">Esther Hikari</a> 
 - <a href="https://www.linkedin.com/in/guilherme-novaes-lima">Guilherme Novaes Lima</a>
 - <a href="https://www.linkedin.com/in/mariana-g%C3%B6rresen-b03059210/">Mariana Görresen</a> 
-- <a href=" https://www.linkedin.com/in/renan-ribeiro-31a205247/"Renan Ribeiro</a>
-
+- <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a> 
+- 
 ## 📝 Descrição
 
 Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
