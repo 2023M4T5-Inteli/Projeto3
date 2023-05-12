@@ -20,15 +20,15 @@ A solução da equipe Rastreando para o problema de perda e extravio de tablets 
 
 ## 📁 Estrutura de pastas
 
-|--> documentos
- | --> outros
- | T1_G5_V5_IoT_Document.pdf
- | T1_G5_V5_Instruction_Manual.pdf
-|--> src
- |--> Backend
- |--> Circuito
- |--> Frontend
-| readme.md
+|--> documentos<br>
+  &emsp;| --> outros <br>
+  &emsp;| T1_G5_V5_IoT_Document.pdf
+  &emsp;| T1_G5_V5_Instruction_Manual.pdf
+|-->src<br>
+  &emsp;|--> Backend
+  &emsp;|--> Circuito
+  &emsp;|--> Frontend
+| readme.md<br>
 
 Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
