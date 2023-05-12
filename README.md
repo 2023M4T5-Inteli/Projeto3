@@ -20,16 +20,17 @@ A solução da equipe Rastreando para o problema de perda e extravio de tablets 
 
 ## 📁 Estrutura de pastas
 
-|--> documentos<br>
-  &emsp;| --> outros <br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Predictive_Model_Document.pdf<br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Predictive_Model_Document.docx<br>
-|--> notebooks<br>
-  &emsp;|--> T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Predictive_Model_Development.ipynb<br>
-| readme.md<br>
-| license.txt
+|--> documentos
+ | --> outros
+ | T1_G5_V5_IoT_Document.pdf
+ | T1_G5_V5_Instruction_Manual.pdf
+|--> src
+ |--> Backend
+ |--> Circuito
+ |--> Frontend
+| readme.md
 
-Dentre os arquivos presentes na raiz do projeto, definem-se:
+Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 - <b>readme.md</b>: arquivo que serve como guia e explicação geral sobre o projeto (o mesmo que você está lendo agora).
 
