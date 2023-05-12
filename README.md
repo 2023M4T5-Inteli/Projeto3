@@ -14,8 +14,9 @@
 - <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a> 
 
 ## 📝 Descrição
+O desafio que a Pirelli nos trouxe consiste em desenvolver uma solução para rastreio de tablets/notebooks dentro da fábrica, de forma a saber a localidade mais exata possível e evitar que saia do ambiente fabril, sendo possível acompanhar esta localização através de um dashboard.
 
-Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
+A solução da equipe Rastreando para o problema de perda e extravio de tablets e notebooks, consiste na criação de um artefato IoT que possa ser acoplado nesses dispositivos e seja capaz de rastreá-los dentro da fábrica. Desse modo, o grupo desenvolverá um aparelho que consegue localizar esses dispositivos por meio da intensidade de sinal de Wi-Fi. Também nessa solução, haverá outro aparelho para gerenciar o manuseio dos tablets e notebooks a fim de registrar quem os estão portando, aumentando ainda mais a segurança dos mesmos.
 
 ## 📁 Estrutura de pastas
 
@@ -45,19 +46,12 @@ Se preferir, também é possível acessá-lo a partir do seguinte link:
  <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Manual de Intruções</a> 
 
 ## 🗃 Histórico de lançamentos
-
-* 0.2.1 - 25/01/2022
-    * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * Crash quando chama `baz()`
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * Renomeia `foo()` para `bar()`
-* 0.0.1 - 29/05/2023
-    * Primeira submissão da documentação
+* 0.0.1 - 28/04/2023
+    * Primeira submissão da documentação.
+    * Primeira submissão de código do circuito (wokwi).
+* 0.1.0 - 12/05/2023
+    * Segunda submissão da documentação.
+    * Segunda submissão de código do circuito.
 
 ## 📋 Licença/License
 
