@@ -14,7 +14,7 @@
 - <a href="https://www.linkedin.com/in/renan-ribeiro-31a205247/">Renan Ribeiro</a> 
 
 ## 📝 Descrição
-O desafio que a Pirelli nos trouxe consiste em desenvolver uma solução para rastreio de tablets/notebooks dentro da fábrica, de forma a saber a localidade mais exata possível e evitar que saia do ambiente fabril, sendo possível acompanhar esta localização através de um dashboard.
+O desafio que a Pirelli nos trouxe consiste em uma solução para rastreio de tablets/notebooks dentro da fábrica, de forma a saber a localidade mais exata possível e evitar que os mesmos saiam do ambiente fabril, sendo possível acompanhar esta localização através de um dashboard.
 
 A solução da equipe Rastreando para o problema de perda e extravio de tablets e notebooks, consiste na criação de um artefato IoT que possa ser acoplado nesses dispositivos e seja capaz de rastreá-los dentro da fábrica. Desse modo, o grupo desenvolverá um aparelho que consegue localizar esses dispositivos por meio da intensidade de sinal de Wi-Fi. Também nessa solução, haverá outro aparelho para gerenciar o manuseio dos tablets e notebooks a fim de registrar quem os estão portando, aumentando ainda mais a segurança dos mesmos.
 
