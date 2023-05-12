@@ -22,8 +22,8 @@ A solução da equipe Rastreando para o problema de perda e extravio de tablets 
 
 |--> documentos<br>
   &emsp;| --> outros <br>
-  &emsp;| T1_G3_V5_IoT_Document.pdf<br>
-  &emsp;| T1_G3_V5_Instruction_Manual.pdf<br>
+  &emsp;| T5_G3_V05_IoT_Document.pdf<br>
+  &emsp;| T5_G3_V05_Instruction_Manual.pdf<br>
 |-->src<br>
   &emsp;|--> Backend<br>
   &emsp;|--> Circuito<br>
