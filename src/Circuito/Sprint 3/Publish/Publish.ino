@@ -22,7 +22,7 @@
  const char* mqtt_server = "MQTT Server"; //Servidor MQTT, pode ser um Broker online, mas nesse caso escolhemos Local Host
  const char* inTopic = "location/esp"; //Topico em que a mensagem sera publicada
  const char* clientName = "esp_2"; //Identificacao do ESP32 que sera conectado
- const char* mac = "40:22:D8:03:F4:E8"; //Mensagem que sera publicada, nesse caso escolhemos enviar o MAC do ESP32 para identificar o dispositivo
+ const char* mac = "Mac Address"; //Mensagem que sera publicada, nesse caso escolhemos enviar o MAC do ESP32 para identificar o dispositivo
  
  PubSubClient client(espClient);
  
