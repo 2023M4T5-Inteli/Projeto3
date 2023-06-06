@@ -1,14 +1,19 @@
 import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
-import Header from "../../components/header";
 import { useTheme } from "@mui/material";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { tokens } from "../../theme";
+import {useNavigate} from 'react-router-dom';
+import { mockDataContacts } from "../../data/mockData";
+import Header from "../../components/header";
 
 const Team = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const navigateForm = () => {
+    navigate('/formTeam');
+  };
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -42,7 +47,7 @@ const Team = () => {
         title="Funcionários"
         subtitle="Lista de funcionários que utilizarão os dispositivos"
       />
-      <Button
+      <Button onClick={navigateForm}
         sx={{
           backgroundColor: colors.blueAccent[700],
           color: colors.grey[100],

@@ -4,7 +4,8 @@ import Topbar from "./pages/global/topbar";
 import Sidebar from "./pages/global/sidebar";
 import Dashboard from "./pages/geral";
 import Team from "./pages/team";
-import Form from "./pages/form";
+import FormDevice from "./pages/formDevice";
+import FormTeam from "./pages/formTeam";
 import Devices from "./pages/devices";
 import { Routes, Route } from "react-router-dom";
 
@@ -23,7 +24,8 @@ function App() {
             <Routes>
               <Route path = "/" element={<Dashboard />} />
               <Route path = "/team" element={<Team />} />
-              <Route path = "/form" element={<Form />} />
+              <Route path = "/formDevice" element={<FormDevice />} />
+              <Route path = "/formTeam" element={<FormTeam />} />
               <Route path = "/devices" element={<Devices />} />
             </Routes>
           </main>

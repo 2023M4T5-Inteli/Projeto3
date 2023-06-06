@@ -4,7 +4,7 @@ import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/header";
 
-const Form = () => {
+const FormTeam = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -41,7 +41,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
+                label="Primeiro Nome"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
@@ -54,7 +54,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Last Name"
+                label="Último nome"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.lastName}
@@ -80,7 +80,7 @@ const Form = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Number"
+                label="Telefone"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
@@ -151,4 +151,4 @@ const initialValues = {
   address2: "",
 };
 
-export default Form;
+export default FormTeam;
