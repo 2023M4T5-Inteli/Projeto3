@@ -1,15 +1,19 @@
 import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import {useNavigate} from 'react-router-dom';
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { mockDataDevices } from "../../data/mockData";
 import Header from "../../components/header";
 import { useTheme } from "@mui/material";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const Devices = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  const navigateForm = () => {
+    navigate('/formDevice');
+  };
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
@@ -21,25 +25,25 @@ const Devices = () => {
 
     {
       field: "phone",
-      headerName: "MAC",
+      headerName: "MAC Dispositivo",
       flex: 1,
     },
     {
       field: "zipCode",
-      headerName: "IP",
+      headerName: "MAC Rastreador",
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box height="50px" display="flex" justifyContent="space-between" alignItems="center">
       <Header
         title="Dispositivos"
         subtitle="Lista de dispositivos cadastrados"
       />
       <Box>
-      <Button
+      <Button onClick={navigateForm}
         sx={{
           backgroundColor: colors.blueAccent[700],
           color: colors.grey[100],
@@ -87,7 +91,7 @@ const Devices = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={mockDataDevices}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />

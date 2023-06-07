@@ -42,7 +42,7 @@ const Team = () => {
 
   return (
     <Box m="20px">
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box height="50px" display="flex" justifyContent="space-between" alignItems="center">
       <Header
         title="Funcionários"
         subtitle="Lista de funcionários que utilizarão os dispositivos"

@@ -13,7 +13,7 @@ const FormDevice = () => {
 
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Header title="Adicionar Dispositivo" subtitle="Para ter acesso ao rastreamento no dashboard" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -41,33 +41,7 @@ const FormDevice = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="First Name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.firstName}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Last Name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.lastName}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Email"
+                label="Setor"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.email}
@@ -80,7 +54,7 @@ const FormDevice = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Number"
+                label="MAC Dispositivo"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.contact}
@@ -93,26 +67,13 @@ const FormDevice = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Address 1"
+                label="MAC Tablet"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.address1}
                 name="address1"
                 error={!!touched.address1 && !!errors.address1}
                 helperText={touched.address1 && errors.address1}
-                sx={{ gridColumn: "span 4" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Address 2"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.address2}
-                name="address2"
-                error={!!touched.address2 && !!errors.address2}
-                helperText={touched.address2 && errors.address2}
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>

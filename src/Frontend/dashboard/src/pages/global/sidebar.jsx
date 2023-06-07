@@ -6,9 +6,10 @@ import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import TabletAndroidOutlinedIcon from '@mui/icons-material/TabletAndroidOutlined';
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -66,6 +67,7 @@ const Sidebar = () => {
             }}
           >
             {!isCollapsed && (
+
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -100,10 +102,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  User
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                  Técnico de TI
                 </Typography>
               </Box>
             </Box>
@@ -112,7 +114,7 @@ const Sidebar = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/"
+              to="/map"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
@@ -123,7 +125,7 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Tabelas
             </Typography>
             <Item
               title="Funcionários"
@@ -145,12 +147,12 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+              Outros
             </Typography>
             <Item
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
+              title="Configurações"
+              to=""
+              icon={<SettingsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

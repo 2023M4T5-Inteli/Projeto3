@@ -7,6 +7,7 @@ import Team from "./pages/team";
 import FormDevice from "./pages/formDevice";
 import FormTeam from "./pages/formTeam";
 import Devices from "./pages/devices";
+import Map from "./pages/map";
 import { Routes, Route } from "react-router-dom";
 
 
@@ -27,6 +28,7 @@ function App() {
               <Route path = "/formDevice" element={<FormDevice />} />
               <Route path = "/formTeam" element={<FormTeam />} />
               <Route path = "/devices" element={<Devices />} />
+              <Route path = "/map" element={<Map />} />
             </Routes>
           </main>
         </div>
