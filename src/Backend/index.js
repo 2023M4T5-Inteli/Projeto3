@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const sqlite3 = require('sqlite3');
 const app = express();
 
 app.use(express.json());
@@ -12,7 +11,13 @@ app.use((req, res, next) => {
 });
 
 const usersRoutes = require('./routes/user.js');
+const funcRoutes = require('./routes/funcionarios.js');
+const histRoutes = require('./routes/historico.js');
+const dispoRoutes = require('./routes/dispositivos.js');
 
-app.use('/', usersRoutes);
+app.use('/user', usersRoutes);
+app.use('/func', funcRoutes);
+app.use('/hist', histRoutes);
+app.use('/dispo', dispoRoutes);
 
-app.listen(3302, () => console.log('Listening at port'));
+app.listen(3302, () => console.log('Listening at port 3302'));
