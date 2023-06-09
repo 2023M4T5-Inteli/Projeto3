@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require("path");
 
 app.use(express.json());
 app.use(cors());
@@ -20,4 +21,4 @@ app.use('/func', funcRoutes);
 app.use('/hist', histRoutes);
 app.use('/dispo', dispoRoutes);
 
-app.listen(3302, () => console.log('Listening at port 3302'));
+app.listen(3000, () => console.log('Listening at port 3000'));
