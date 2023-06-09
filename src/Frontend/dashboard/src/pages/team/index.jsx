@@ -6,8 +6,25 @@ import { tokens } from "../../theme";
 import {useNavigate} from 'react-router-dom';
 import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/header";
+import { useEffect, useState } from "react";
 
 const Team = () => {
+
+  const [rowsTeam, setRowsTeam] = useState([]);
+  const url = "https://3qqx85-3000.csb.app/func";
+
+  useEffect(() => {
+    fetch(url)
+    .then(res => res.json())
+    .then(data => setRowsTeam(data))
+    .catch(error => console.log(error))
+
+  }, [])
+
+  useEffect(() => {
+    console.log(rowsTeam)
+  }, [rowsTeam])
+
   const navigate = useNavigate();
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -18,24 +35,24 @@ const Team = () => {
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
-      field: "registrarId",
-      headerName: "Credencial",
+      field: "nome",
+      headerName: "Nome",
       flex: 1,
     },
     {
-      field: "name",
-      headerName: "Nome",
+      field: "id_empresa",
+      headerName: "Credencial",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
-      field: "phone",
-      headerName: "Telefone",
+      field: "email",
+      headerName: "Email",
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "telefone",
+      headerName: "Telefone",
       flex: 1,
     },
   ];
@@ -93,7 +110,7 @@ const Team = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={rowsTeam}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
