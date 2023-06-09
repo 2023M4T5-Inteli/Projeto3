@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 const Team = () => {
 
   const [rowsTeam, setRowsTeam] = useState([]);
-  const url = "https://3qqx85-3000.csb.app/func";
+  const url = "https://rd6rmm-3000.csb.app/func";
 
   useEffect(() => {
     fetch(url)
