@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { FormControlLabel, IconButton, Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import {useNavigate} from 'react-router-dom';
 import { tokens } from "../../theme";
@@ -6,6 +6,44 @@ import { mockDataDevices } from "../../data/mockData";
 import Header from "../../components/header";
 import { useTheme } from "@mui/material";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+
+const Edit = () => {
+  const handleEditClick = () => {
+    // some action
+  };
+
+  return (
+    <FormControlLabel
+      control={
+        <IconButton
+          onClick={handleEditClick}
+        >
+          <EditOutlinedIcon/>
+        </IconButton>
+      }
+    />
+  );
+};
+
+const Delete = () => {
+  const handleEditClick = () => {
+    // some action
+  };
+
+  return (
+    <FormControlLabel
+      control={
+        <IconButton
+          onClick={handleEditClick}
+        >
+          <DeleteOutlinedIcon/>
+        </IconButton>
+      }
+    />
+  );
+};
 
 const Devices = () => {
   const navigate = useNavigate();
@@ -33,6 +71,24 @@ const Devices = () => {
       headerName: "MAC Rastreador",
       flex: 1,
     },
+    {
+      field: "edit",
+      headerName: "Editar",
+      flex: 0.5,
+      sortable: false,
+      disableClickEventBubbling: true,
+      renderCell: (params) => {
+        return (
+          <div
+            className="d-flex justify-content-between align-items-center"
+            style={{ cursor: "pointer" }}
+          >
+            <Edit index={params.row.id} />
+            <Delete index={params.row.id} />
+          </div>
+        );
+      }
+    }
   ];
 
   return (

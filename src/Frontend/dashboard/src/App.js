@@ -2,7 +2,6 @@ import { ColorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Topbar from "./pages/global/topbar";
 import Sidebar from "./pages/global/sidebar";
-import Dashboard from "./pages/geral";
 import Team from "./pages/team";
 import FormDevice from "./pages/formDevice";
 import FormTeam from "./pages/formTeam";
@@ -23,12 +22,11 @@ function App() {
           <main className="content">
             <Topbar />
             <Routes>
-              <Route path = "/" element={<Dashboard />} />
               <Route path = "/team" element={<Team />} />
               <Route path = "/formDevice" element={<FormDevice />} />
               <Route path = "/formTeam" element={<FormTeam />} />
               <Route path = "/devices" element={<Devices />} />
-              <Route path = "/map" element={<Map />} />
+              <Route path = "/" element={<Map />} />
             </Routes>
           </main>
         </div>
