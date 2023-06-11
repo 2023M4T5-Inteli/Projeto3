@@ -14,21 +14,15 @@ const Map = () => {
 
   return (
     <Box m="20px">
-      {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Seja bem-vindo(a)!" />
       </Box>
-
-      {/* GRID & CHARTS */}
       <Box
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
         gridAutoRows="140px"
         gap="20px"
       >
-
-
-        {/* ROW 2 */}
         <Box
           gridColumn="span 8"
           gridRow="span 2"
@@ -41,17 +35,23 @@ const Map = () => {
             justifyContent="space-between"
             alignItems="center"
           >
-                <Box
-                display="flex"
-                backgroundColor={colors.primary[300]}
-                borderRadius="3px"
-                >
-                    <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Selecione o Dispositivo" />
-                    <IconButton type="button" sx={{ p: 1 }} justifyContent="flex-end">
-                    <ArrowDropDownOutlinedIcon />
-                    </IconButton>
-                </Box>
+            <Box
+             display="flex"
+             backgroundColor={colors.primary[300]}
+             borderRadius="3px"
+            >
+              <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Selecione o Dispositivo" />
+              <IconButton type="button" sx={{ p: 1 }} justifyContent="flex-end">
+                <ArrowDropDownOutlinedIcon />
+              </IconButton>
+              
+            </Box>
           </Box>
+          <Box>
+          <Box height="250px" mt="-20px">
+            <BarChart isDashboard={true} />
+          </Box>
+        </Box>
         </Box>
         <Box
           gridColumn="span 4"
@@ -81,7 +81,7 @@ const Map = () => {
              color={colors.blueAccent[500]}
              sx={{ mt: "15px" }}>
                 Disponíveis: 25%
-                </Typography>
+              </Typography>
           </Box>
         </Box>
         <Box
