@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3');
 const router = express.Router();
 const db = new sqlite3.Database('pirelli.db');
 
-// Rota GET para obter todos os usuários
+// Rota GET para obter todos os historicos
 router.get('/', (req, res) => {
   const query = 'SELECT * FROM historico';
 
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// Rota GET para obter um usuário específico
+// Rota GET para obter um historico específico
 router.get('/:id', (req, res) => {
   const query = 'SELECT * FROM historico WHERE id = ?';
   const userId = req.params.id;
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
 });
 //const query = 'INSERT INTO historico (id_funcionario, id_tablet, data_emprestimo, data_devolucao) VALUES (?, ?, ?, ?)';
  
-// Rota POST para criar um novo usuário
+// Rota POST para criar um novo historico
 router.post('/', (req, res) => {
   const { id_funcionario, id_tablet, data_emprestimo, data_devolucao } = req.body;
   
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
   });
 });
 
-// Rota PUT para atualizar um usuário existente
+// Rota PUT para atualizar um historico existente
 router.put('/:id', (req, res) => {
   const { id_funcionario, id_tablet, data_emprestimo, data_devolucao } = req.body;
   const userId = req.params.id;
@@ -78,7 +78,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// Rota DELETE para excluir um usuário
+// Rota DELETE para excluir um historico
 router.delete('/:id', (req, res) => {
   const userId = req.params.id;
 
@@ -98,4 +98,5 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// Exportando as rotas
 module.exports = router;

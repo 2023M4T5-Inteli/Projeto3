@@ -1,10 +1,10 @@
-const express = require('express');
-const sqlite3 = require('sqlite3');
+const express = require('express'); // Importando o módulo Express
+const sqlite3 = require('sqlite3'); // Importando o sqlite3 para usar o banco de dados sqlite
 
 const router = express.Router();
-const db = new sqlite3.Database('pirelli.db');
+const db = new sqlite3.Database('pirelli.db'); // Definindo "DataBase s pirelli.db"
 
-// Rota GET para obter todos os usuários
+// Rota GET para obter todos os dispositivos
 router.get('/', (req, res) => {
   const query = 'SELECT * FROM dispositivos';
 
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// Rota GET para obter um usuário específico
+// Rota GET para obter um dispositivo específico
 router.get('/:id', (req, res) => {
   const query = 'SELECT * FROM dispositivos WHERE id = ?';
   const userId = req.params.id;
@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// Rota POST para criar um novo usuário
+// Rota POST para criar um novo dispositivo
 router.post('/', (req, res) => {
   const { setor, mac, ip } = req.body;
 
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
   });
 });
 
-// Rota PUT para atualizar um usuário existente
+// Rota PUT para atualizar um dispositivo existente
 router.put('/:id', (req, res) => {
   const { setor, mac, ip } = req.body;
   const userId = req.params.id;
@@ -76,7 +76,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// Rota DELETE para excluir um usuário
+// Rota DELETE para excluir um dispositivo
 router.delete('/:id', (req, res) => {
   const userId = req.params.id;
 
@@ -96,4 +96,5 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// Exportando as rotas
 module.exports = router;

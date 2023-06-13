@@ -1,14 +1,14 @@
-import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../../components/header";
+import { Box, Button, TextField } from "@mui/material"; // Importando componentes do Material-UI
+import { Formik } from "formik"; // Importando o componente Formik
+import * as yup from "yup"; // Importando o módulo yup para validação de formulário
+import useMediaQuery from "@mui/material/useMediaQuery"; // Importando o hook useMediaQuery do Material-UI
+import Header from "../../components/header"; // Importando o componente Header personalizado
 
 const FormDevice = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:600px)"); // Verificando se a tela não é de um dispositivo móvel
 
   const handleFormSubmit = (values) => {
-    console.log(values);
+    console.log(values); // Printando no console os valores enviados pelo formulario
   };
 
   return (
@@ -89,9 +89,11 @@ const FormDevice = () => {
   );
 };
 
+// Expressão para validar número telefonico
 const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
+// Função para validar os campos
 const checkoutSchema = yup.object().shape({
   firstName: yup.string().required("required"),
   lastName: yup.string().required("required"),
@@ -103,6 +105,7 @@ const checkoutSchema = yup.object().shape({
   address1: yup.string().required("required"),
   address2: yup.string().required("required"),
 });
+// Definindo valores inciais
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -112,4 +115,5 @@ const initialValues = {
   address2: "",
 };
 
+// Exportando função principal
 export default FormDevice;

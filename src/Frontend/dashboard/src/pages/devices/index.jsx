@@ -1,17 +1,18 @@
-import { FormControlLabel, IconButton, Box, Button } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import {useNavigate} from 'react-router-dom';
-import { tokens } from "../../theme";
-import { mockDataDevices } from "../../data/mockData";
-import Header from "../../components/header";
-import { useTheme } from "@mui/material";
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import { FormControlLabel, IconButton, Box, Button } from "@mui/material"; // Importando componentes do Material-UI
+import { DataGrid, GridToolbar } from "@mui/x-data-grid"; // Importando componentes do DataGrid do Material-UI
+import { useNavigate } from 'react-router-dom'; // Importando o hook useNavigate do react-router-dom
+import { tokens } from "../../theme"; // Importando tokens do tema personalizado
+import { mockDataDevices } from "../../data/mockData"; // Importando dados simulados
+import Header from "../../components/header"; // Importando o componente Header personalizado
+import { useTheme } from "@mui/material"; // Importando o hook useTheme do Material-UI
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'; // Importando o ícone de adicionar do Material-UI
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'; // Importando o ícone de editar do Material-UI
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'; // Importando o ícone de deletar do Material-UI
 
 const Edit = () => {
   const handleEditClick = () => {
-    // some action
+    // Alguma ação de edição
+    console.log("Clicado em Editar!");
   };
 
   return (
@@ -29,7 +30,8 @@ const Edit = () => {
 
 const Delete = () => {
   const handleEditClick = () => {
-    // some action
+    // Alguma ação de delete
+    console.log("Clicado em Apagar!");
   };
 
   return (
@@ -46,19 +48,20 @@ const Delete = () => {
 };
 
 const Devices = () => {
-  const navigate = useNavigate();
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const navigate = useNavigate(); // Inicializa o hook useNavigate
+  const theme = useTheme(); // Inicializa o hook useTheme
+  const colors = tokens(theme.palette.mode); // Obtém as cores do tema personalizado
   const navigateForm = () => {
-    navigate('/formDevice');
+    navigate('/formDevice'); // Navega para a rota '/formDevice'
   };
+  // Define as colunas
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
+    { field: "id", headerName: "ID", flex: 0.5 }, 
     {
       field: "name",
       headerName: "Setor",
       flex: 1,
-      cellClassName: "name-column--cell",
+      cellClassName: "name-column--cell", 
     },
 
     {
@@ -94,24 +97,24 @@ const Devices = () => {
   return (
     <Box m="20px">
       <Box height="50px" display="flex" justifyContent="space-between" alignItems="center">
-      <Header
-        title="Dispositivos"
-        subtitle="Lista de dispositivos cadastrados"
-      />
-      <Box>
-      <Button onClick={navigateForm}
-        sx={{
-          backgroundColor: colors.blueAccent[700],
-          color: colors.grey[100],
-          fontSize: "14px",
-          fontWeight: "bold",
-          padding: "10px 20px",
-        }}
-      >
-        <AddOutlinedIcon sx={{ mr: "10px" }} />
-         Adicionar
-      </Button>
-      </Box>
+        <Header
+          title="Dispositivos"
+          subtitle="Lista de dispositivos cadastrados"
+        />
+        <Box>
+          <Button onClick={navigateForm}
+            sx={{
+              backgroundColor: colors.blueAccent[700],
+              color: colors.grey[100],
+              fontSize: "14px",
+              fontWeight: "bold",
+              padding: "10px 20px",
+            }}
+          >
+            <AddOutlinedIcon sx={{ mr: "10px" }} />
+            Adicionar
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -156,4 +159,5 @@ const Devices = () => {
   );
 };
 
+// Exporta a função principal
 export default Devices;

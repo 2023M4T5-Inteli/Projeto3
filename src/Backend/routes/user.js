@@ -96,4 +96,5 @@ router.delete('/:id', (req, res) => {
   });
 });
 
+// Exportando as rotas
 module.exports = router;

@@ -1,14 +1,34 @@
-import { Box, Button, TextField } from "@mui/material";
-import { Formik } from "formik";
-import * as yup from "yup";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Header from "../../components/header";
+import { Box, Button, TextField } from "@mui/material"; // Importando componentes do Material-UI
+import { Formik } from "formik"; // Importando o Formik para gerenciar o estado do formulário
+import * as yup from "yup"; // Importando o Yup para validação de formulários
+import useMediaQuery from "@mui/material/useMediaQuery"; // Importando o hook useMediaQuery do Material-UI
+import Header from "../../components/header"; // Importando o componente Header personalizado
 
 const FormTeam = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  const isNonMobile = useMediaQuery("(min-width:600px)"); // Verifica se a tela não é mobile
+  const url = "https://rd6rmm-3000.csb.app/func/"; // URL da API para realizar as requisições
 
   const handleFormSubmit = (values) => {
-    console.log(values);
+    // Função chamada quando o formulário é enviado. Realiza uma requisição POST para a API com os valores do formulário.
+    fetch(url, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: values.nome,
+        id_empresa: values.credencial,
+        email: values.email,
+        telefone: values.contact
+      })
+    })
+      .then(res => { // Verifica se está funcionando
+        console.log(values);
+        if (res.ok) {
+          console.log("Criado com sucesso!");
+        } else {
+          console.log("Erro ao criar!");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -16,9 +36,9 @@ const FormTeam = () => {
       <Header title="Adicionar Funcionário" subtitle="Para ter acesso ao empréstimo de dispositivos" />
 
       <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-        validationSchema={checkoutSchema}
+        onSubmit={handleFormSubmit} // Define a função de envio do formulário
+        initialValues={initialValues} // Define os valores iniciais do formulário
+        validationSchema={checkoutSchema} // Define o esquema de validação do formulário
       >
         {({
           values,
@@ -41,27 +61,14 @@ const FormTeam = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Primeiro Nome"
+                label="Nome"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.firstName}
-                name="firstName"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Último nome"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.lastName}
-                name="lastName"
-                error={!!touched.lastName && !!errors.lastName}
-                helperText={touched.lastName && errors.lastName}
-                sx={{ gridColumn: "span 2" }}
+                value={values.nome}
+                name="nome"
+                error={!!touched.nome && !!errors.nome}
+                helperText={touched.nome && errors.nome}
+                sx={{ gridColumn: "span 4" }}
               />
               <TextField
                 fullWidth
@@ -96,10 +103,10 @@ const FormTeam = () => {
                 label="Credencial"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.address1}
-                name="address1"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                value={values.credencial}
+                name="credencial"
+                error={!!touched.credencial && !!errors.credencial}
+                helperText={touched.credencial && errors.credencial}
                 sx={{ gridColumn: "span 4" }}
               />
             </Box>
@@ -119,23 +126,20 @@ const phoneRegExp =
   /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
 const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
+  nome: yup.string().required("required"), // Define uma validação para o campo "nome" (obrigatório)
+  email: yup.string().email("invalid email").required("required"), // Define uma validação para o campo "email" (obrigatório e formato de email)
   contact: yup
     .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
+    .matches(phoneRegExp, "Phone number is not valid") // Define uma validação para o campo "contact" (formato de telefone)
+    .required("required"), // Define que o campo "contact" é obrigatório
+  credencial: yup.string().required("required"), // Define uma validação para o campo "credencial" (obrigatório)
 });
+
 const initialValues = {
-  firstName: "",
-  lastName: "",
+  nome: "",
   email: "",
   contact: "",
-  address1: "",
-  address2: "",
+  credencial: "",
 };
 
 export default FormTeam;
