@@ -1,77 +1,113 @@
-import { FormControlLabel, IconButton, Box, Button } from "@mui/material"; // Importando componentes do Material-UI
-import { DataGrid, GridToolbar } from "@mui/x-data-grid"; // Importando componentes do DataGrid do Material-UI
-import { useNavigate } from 'react-router-dom'; // Importando o hook useNavigate do react-router-dom
-import { tokens } from "../../theme"; // Importando tokens do tema personalizado
-import { mockDataDevices } from "../../data/mockData"; // Importando dados simulados
-import Header from "../../components/header"; // Importando o componente Header personalizado
-import { useTheme } from "@mui/material"; // Importando o hook useTheme do Material-UI
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined'; // Importando o ícone de adicionar do Material-UI
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined'; // Importando o ícone de editar do Material-UI
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined'; // Importando o ícone de deletar do Material-UI
+import { tokens } from "../../theme"; // Importação do módulo "tokens" do tema personalizado
+import { useNavigate, Link } from 'react-router-dom'; // Importação dos hooks de navegação do React Router
+import Header from "../../components/header"; // Importação do componente de cabeçalho personalizado
+import { useEffect, useState } from "react"; // Importação dos hooks useEffect e useState do React
+import { FormControlLabel, IconButton, Box, Button } from "@mui/material"; // Importação de componentes do Material-UI
+import { DataGrid, GridToolbar } from "@mui/x-data-grid"; // Importação do componente de tabela do Material-UI
+import { useTheme } from "@mui/material"; // Importação do hook useTheme do Material-UI
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'; // Importação do ícone de adição do Material-UI
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'; // Importação do ícone de edição do Material-UI
+import DeleteIcon from '@mui/icons-material/DeleteOutlined'; // Importação do ícone de exclusão do Material-UI
 
-const Edit = () => {
+const Edit = (props) => {
   const handleEditClick = () => {
-    // Alguma ação de edição
-    console.log("Clicado em Editar!");
+    // Função de callback para manipular o clique no botão de edição
+  };
+
+  return (
+    <FormControlLabel
+      control={
+        <Link to={"/updateDevice/" + props.index}> {/* Hook Link para redirecionar para a página '/updateTeam'*/}
+          <IconButton
+            onClick={handleEditClick}
+          >
+            <EditOutlinedIcon /> {/* Ícone de edição */}
+          </IconButton>
+        </Link>
+      }
+    />
+  );
+};
+
+const Delete = (props) => {
+  const handleDeleteClick = () => {
+    props.onDelete(props.index); // Chama a função onDelete passando o índice(id) do item a ser excluído
   };
 
   return (
     <FormControlLabel
       control={
         <IconButton
-          onClick={handleEditClick}
+          onClick={handleDeleteClick}
         >
-          <EditOutlinedIcon/>
+          <DeleteIcon /> {/* Ícone de exclusão */}
         </IconButton>
       }
     />
   );
 };
 
-const Delete = () => {
-  const handleEditClick = () => {
-    // Alguma ação de delete
-    console.log("Clicado em Apagar!");
-  };
+const Device = () => {
 
-  return (
-    <FormControlLabel
-      control={
-        <IconButton
-          onClick={handleEditClick}
-        >
-          <DeleteOutlinedIcon/>
-        </IconButton>
-      }
-    />
-  );
-};
+  const [rowsDevice, setRowsDevice] = useState([]); // Estado para armazenar os dados dos funcionários
+  const url = "https://rd6rmm-3000.csb.app/dispo"; // URL para buscar os dados dos funcionários
 
-const Devices = () => {
-  const navigate = useNavigate(); // Inicializa o hook useNavigate
-  const theme = useTheme(); // Inicializa o hook useTheme
-  const colors = tokens(theme.palette.mode); // Obtém as cores do tema personalizado
+  useEffect(() => {
+    // Hook useEffect para buscar os dados dos funcionários 
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setRowsDevice(data))
+      .catch(error => console.log(error))
+  }, [])
+
+  useEffect(() => {
+    // Hook useEffect para exibir os dados dos funcionários no console sempre que houver uma atualização no estado rowsTeam
+    console.log(rowsDevice)
+  }, [rowsDevice])
+
+  const navigate = useNavigate(); // Hook useNavigate para navegar entre páginas
+  const theme = useTheme(); // Hook useTheme para obter o tema atual
+  const colors = tokens(theme.palette.mode); // Obtem os tokens de cores personalizados do tema
+
   const navigateForm = () => {
-    navigate('/formDevice'); // Navega para a rota '/formDevice'
+    navigate('/formDevice'); // Função de callback para navegar para a página '/formTeam' ao clicar no botão "Adicionar"
   };
-  // Define as colunas
+
+  const handleDelete = (id) => {
+    // Função para excluir um funcionário com base no seu ID
+    fetch(url + "/" + id, {
+      method: "DELETE"
+    })
+      .then(res => {
+        if (res.ok) {
+          console.log("Excluído com sucesso!");
+          // Atualiza a lista de funcionários removendo o item excluído
+          setRowsDevice(prevRows => prevRows.filter(row => row.id !== id));
+        }
+        else {
+          console.log("Erro ao excluir!");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 }, 
+    // Definição das colunas da tabela
+    { field: "id", headerName: "ID", flex: 0.5 },
     {
-      field: "name",
+      field: "setor",
       headerName: "Setor",
       flex: 1,
-      cellClassName: "name-column--cell", 
     },
-
     {
-      field: "phone",
-      headerName: "MAC Dispositivo",
+      field: "mac",
+      headerName: "MAC",
       flex: 1,
+      cellClassName: "name-column--cell",
     },
     {
-      field: "zipCode",
-      headerName: "MAC Rastreador",
+      field: "ip",
+      headerName: "IP",
       flex: 1,
     },
     {
@@ -81,13 +117,14 @@ const Devices = () => {
       sortable: false,
       disableClickEventBubbling: true,
       renderCell: (params) => {
+        // Função para renderizar as células da coluna "Editar"
         return (
           <div
             className="d-flex justify-content-between align-items-center"
             style={{ cursor: "pointer" }}
           >
-            <Edit index={params.row.id} />
-            <Delete index={params.row.id} />
+            <Edit index={params.row.id} /> {/* Renderiza o componente "Edit" passando o índice do funcionário*/}
+            <Delete index={params.row.id} onDelete={handleDelete} /> {/* Renderiza o componente "Delete" passando o índice e a função de exclusão*/}
           </div>
         );
       }
@@ -98,25 +135,22 @@ const Devices = () => {
     <Box m="20px">
       <Box height="50px" display="flex" justifyContent="space-between" alignItems="center">
         <Header
-          title="Dispositivos"
-          subtitle="Lista de dispositivos cadastrados"
-        />
-        <Box>
-          <Button onClick={navigateForm}
-            sx={{
-              backgroundColor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <AddOutlinedIcon sx={{ mr: "10px" }} />
-            Adicionar
-          </Button>
-        </Box>
+          title="Funcionários"
+          subtitle="Lista de funcionários que utilizarão os dispositivos"
+        /> 
+        <Button onClick={navigateForm} // Renderiza o componente de cabeçalho personalizado
+          sx={{
+            backgroundColor: colors.blueAccent[700],
+            color: colors.grey[100],
+            fontSize: "14px",
+            fontWeight: "bold",
+            padding: "10px 20px",
+          }}
+        >
+          <AddOutlinedIcon sx={{ mr: "10px" }} /> {/* Ícone de adição */}
+          Adicionar
+        </Button>
       </Box>
-
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -150,9 +184,9 @@ const Devices = () => {
         }}
       >
         <DataGrid
-          rows={mockDataDevices}
+          rows={rowsDevice} // Define as linhas a partir da constante definida que recebe os dados do banco de dados
           columns={columns}
-          components={{ Toolbar: GridToolbar }}
+          components={{ Toolbar: GridToolbar }} // Utiliza o componente GridToolbar como a barra de ferramentas da tabela
         />
       </Box>
     </Box>
@@ -160,4 +194,4 @@ const Devices = () => {
 };
 
 // Exporta a função principal
-export default Devices;
+export default Device;

@@ -8,6 +8,7 @@ import FormTeam from "./pages/formTeam"; // Importando o componente FormTeam per
 import Devices from "./pages/devices"; // Importando o componente Devices personalizado
 import Map from "./pages/map"; // Importando o componente Map personalizado
 import UpdateTeam from "./pages/updateTeam"; // Importando o componente UpdateTeam personalizado
+import UpdateDevice from "./pages/updateDevices"; // Importando o componente UpdateDevice personalizado
 import { Routes, Route } from "react-router-dom"; // Importando componentes de roteamento do React Router
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
               <Route path="/devices" element={<Devices />} /> {/* Renderizando o componente Devices na rota "/devices" */}
               <Route path="/" element={<Map />} /> {/* Renderizando o componente Map na rota principal "/" */}
               <Route path="/updateTeam/:id" element={<UpdateTeam />} /> {/* Renderizando o componente UpdateTeam na rota "/updateTeam/:id" */}
+              <Route path="/updateDevice/:id" element={<UpdateDevice />} /> {/* Renderizando o componente UpdateDevice na rota "/updateDevice/:id" */}
             </Routes>
           </main>
         </div>

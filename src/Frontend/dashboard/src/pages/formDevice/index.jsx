@@ -1,24 +1,43 @@
 import { Box, Button, TextField } from "@mui/material"; // Importando componentes do Material-UI
-import { Formik } from "formik"; // Importando o componente Formik
-import * as yup from "yup"; // Importando o módulo yup para validação de formulário
+import { Formik } from "formik"; // Importando o Formik para gerenciar o estado do formulário
+import * as yup from "yup"; // Importando o Yup para validação de formulários
 import useMediaQuery from "@mui/material/useMediaQuery"; // Importando o hook useMediaQuery do Material-UI
 import Header from "../../components/header"; // Importando o componente Header personalizado
 
 const FormDevice = () => {
-  const isNonMobile = useMediaQuery("(min-width:600px)"); // Verificando se a tela não é de um dispositivo móvel
+  const isNonMobile = useMediaQuery("(min-width:600px)"); // Verifica se a tela não é mobile
+  const url = "https://rd6rmm-3000.csb.app/dispo/"; // URL da API para realizar as requisições
 
   const handleFormSubmit = (values) => {
-    console.log(values); // Printando no console os valores enviados pelo formulario
+    // Função chamada quando o formulário é enviado. Realiza uma requisição POST para a API com os valores do formulário.
+    fetch(url, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        setor: values.setor,
+        mac: values.mac,
+        ip: values.ip
+      })
+    })
+      .then(res => { // Verifica se está funcionando
+        console.log(values);
+        if (res.ok) {
+          console.log("Criado com sucesso!");
+        } else {
+          console.log("Erro ao criar!");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
     <Box m="20px">
-      <Header title="Adicionar Dispositivo" subtitle="Para ter acesso ao rastreamento no dashboard" />
+      <Header title="Adicionar Dispositivo" subtitle="Para ter acesso ao empréstimo de dispositivos" />
 
       <Formik
-        onSubmit={handleFormSubmit}
-        initialValues={initialValues}
-        validationSchema={checkoutSchema}
+        onSubmit={handleFormSubmit} // Define a função de envio do formulário
+        initialValues={initialValues} // Define os valores iniciais do formulário
+        validationSchema={checkoutSchema} // Define o esquema de validação do formulário
       >
         {({
           values,
@@ -44,42 +63,43 @@ const FormDevice = () => {
                 label="Setor"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.email}
-                name="email"
-                error={!!touched.email && !!errors.email}
-                helperText={touched.email && errors.email}
+                value={values.setor}
+                name="setor"
+                error={!!touched.setor && !!errors.setor}
+                helperText={touched.setor && errors.setor}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="MAC Dispositivo"
+                label="mac"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.contact}
-                name="contact"
-                error={!!touched.contact && !!errors.contact}
-                helperText={touched.contact && errors.contact}
+                value={values.mac}
+                name="mac"
+                error={!!touched.mac && !!errors.mac}
+                helperText={touched.mac && errors.mac}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="MAC Tablet"
+                label="ip"
                 onBlur={handleBlur}
                 onChange={handleChange}
-                value={values.address1}
-                name="address1"
-                error={!!touched.address1 && !!errors.address1}
-                helperText={touched.address1 && errors.address1}
+                value={values.ip}
+                name="ip"
+                error={!!touched.ip && !!errors.ip}
+                helperText={touched.ip && errors.ip}
                 sx={{ gridColumn: "span 4" }}
               />
+
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
               <Button type="submit" color="secondary" variant="contained">
-                Create New User
+                Adicionar
               </Button>
             </Box>
           </form>
@@ -89,31 +109,17 @@ const FormDevice = () => {
   );
 };
 
-// Expressão para validar número telefonico
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
-// Função para validar os campos
 const checkoutSchema = yup.object().shape({
-  firstName: yup.string().required("required"),
-  lastName: yup.string().required("required"),
-  email: yup.string().email("invalid email").required("required"),
-  contact: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  address1: yup.string().required("required"),
-  address2: yup.string().required("required"),
-});
-// Definindo valores inciais
+  setor: yup.string().required("required"), // Define uma validação para o campo "setor" (obrigatório)
+  mac: yup.string().required("required"), // Define uma validação para o campo "email" (obrigatório e formato de email)
+  ip: yup
+    .string().required("required"), // Define que o campo "contact" é obrigatório
+  });
+
 const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  contact: "",
-  address1: "",
-  address2: "",
+  setor: "",
+  mac: "",
+  ip: "",
 };
 
-// Exportando função principal
 export default FormDevice;
