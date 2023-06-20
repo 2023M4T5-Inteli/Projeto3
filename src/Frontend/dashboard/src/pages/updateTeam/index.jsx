@@ -15,6 +15,7 @@ const UpdateTeam = () => {
   const [telefone, setTelefone] = useState(""); //  Hook useState para armazenar o telefone
   const [id_empresa, setId_empresa] = useState(""); //  Hook useState para armazenar o ID da empresa
   const url = "https://rd6rmm-3000.csb.app/func/"; // URL da API para realizar as requisições
+  const navigate = useNavigate();
 
   // Valores nulos iniciais do formulário
   const initialValues = {
@@ -60,6 +61,7 @@ const UpdateTeam = () => {
         console.log(values);
         if (res.ok) {
           console.log("Atualizado com sucesso!");
+          navigate("/team");
         }
         else {
           console.log("Erro ao atualizar!");
@@ -154,11 +156,11 @@ const UpdateTeam = () => {
             </Box>
             {/* Botão para confirmar a atualização dos campos preenchidos*/}
             <Box display="flex" justifyContent="end" mt="20px">
-              <Link to={"/team"}>
+             
                 <Button type="submit" color="secondary" variant="contained">
                   Atualizar
                 </Button>
-              </Link>
+           
             </Box>
           </form>
         )}

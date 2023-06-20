@@ -8,7 +8,8 @@ import Header from "../../components/header"; // Importando o componente Header 
 const FormTeam = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)"); // Verifica se a tela não é mobile
   const url = "https://rd6rmm-3000.csb.app/func/"; // URL da API para realizar as requisições
-
+  const navigate = useNavigate();
+  
   const handleFormSubmit = (values) => {
     // Função chamada quando o formulário é enviado. Realiza uma requisição POST para a API com os valores do formulário.
     fetch(url, {
@@ -25,6 +26,7 @@ const FormTeam = () => {
         console.log(values);
         if (res.ok) {
           console.log("Criado com sucesso!");
+          navigate('/team');
         } else {
           console.log("Erro ao criar!");
         }
@@ -112,11 +114,11 @@ const FormTeam = () => {
               />
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Link to={"/team"}>
+              
                 <Button type="submit" color="secondary" variant="contained">
                   Adicionar
                 </Button>
-              </Link>
+              
             </Box>
           </form>
         )}

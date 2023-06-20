@@ -14,6 +14,7 @@ const UpdateDevice = () => {
   const [mac, setMac] = useState(""); //  Hook useState para armazenar o email
   const [ip, setIp] = useState(""); //  Hook useState para armazenar o telefone
   const url = "https://rd6rmm-3000.csb.app/dispo/"; // URL da API para realizar as requisições
+  const navigate = useNavigate();
 
   // Valores nulos iniciais do formulário
   const initialValues = {
@@ -55,6 +56,7 @@ const UpdateDevice = () => {
         console.log(values);
         if (res.ok) {
           console.log("Atualizado com sucesso!");
+          navigate('/devices');
         }
         else {
           console.log("Erro ao atualizar!");
@@ -135,11 +137,11 @@ const UpdateDevice = () => {
             </Box>
             {/* Botão para confirmar a atualização dos campos preenchidos*/}
             <Box display="flex" justifyContent="end" mt="20px">
-              <Link to={"/devices"}>
+          
                 <Button type="submit" color="secondary" variant="contained">
                   Atualizar
                 </Button>
-              </Link>
+              
             </Box>
           </form>
         )}

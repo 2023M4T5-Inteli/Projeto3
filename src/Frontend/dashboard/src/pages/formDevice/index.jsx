@@ -8,6 +8,7 @@ import { useNavigate, Link } from 'react-router-dom'; // Importação dos hooks 
 const FormDevice = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)"); // Verifica se a tela não é mobile
   const url = "https://rd6rmm-3000.csb.app/dispo/"; // URL da API para realizar as requisições
+  const navigate = useNavigate();
 
   const handleFormSubmit = (values) => {
     // Função chamada quando o formulário é enviado. Realiza uma requisição POST para a API com os valores do formulário.
@@ -24,6 +25,7 @@ const FormDevice = () => {
         console.log(values);
         if (res.ok) {
           console.log("Criado com sucesso!");
+          navigate('/devices');
         } else {
           console.log("Erro ao criar!");
         }
@@ -99,11 +101,11 @@ const FormDevice = () => {
 
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Link to={"/devices"}>
+      
                 <Button type="submit" color="secondary" variant="contained">
                   Adicionar
                 </Button>
-              </Link>
+            
             </Box>
           </form>
         )}
