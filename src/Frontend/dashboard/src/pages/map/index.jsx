@@ -1,6 +1,7 @@
 import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "../../theme";
 import { mockTransactions } from "../../data/mockData";
+import { useEffect, useState } from "react";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/header";
 import BarChart from "../../components/barChart";
@@ -10,7 +11,16 @@ import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined
 
 const Map = () => {
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const colors = tokens(theme.palette.mode);  
+  const [historico, setHistorico] = useState([]);
+  const url = "https://rd6rmm-3000.csb.app/hist/com-nome";
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => setHistorico(data))
+      .catch(error => console.error(error));
+  }, []);
 
   return (
     <Box m="20px">
@@ -102,9 +112,9 @@ const Map = () => {
               Histórico
             </Typography>
           </Box>
-          {mockTransactions.map((transaction, i) => (
+          {historico.map((info) => (
             <Box
-              key={`${transaction.txId}-${i}`}
+              key={info.id}
               display="flex"
               justifyContent="space-between"
               alignItems="center"
@@ -117,19 +127,19 @@ const Map = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {transaction.txId}
+                  {info.id_tablet}
                 </Typography>
                 <Typography color={colors.grey[100]}>
-                  {transaction.user}
+                  {info.nome}
                 </Typography>
               </Box>
-              <Box color={colors.grey[100]}>{transaction.date}</Box>
+              <Box color={colors.grey[100]}>{info.data_hora}</Box>
               <Box
                 backgroundColor={colors.greenAccent[500]}
                 p="5px 10px"
                 borderRadius="4px"
               >
-                {transaction.cost}
+                {info.tipo_acesso}
               </Box>
             </Box>
           ))}
