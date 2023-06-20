@@ -3,6 +3,7 @@ import { Formik } from "formik"; // Importando o Formik para gerenciar o estado 
 import * as yup from "yup"; // Importando o Yup para validação de formulários
 import useMediaQuery from "@mui/material/useMediaQuery"; // Importando o hook useMediaQuery do Material-UI
 import Header from "../../components/header"; // Importando o componente Header personalizado
+import { useNavigate, Link } from 'react-router-dom'; // Importação dos hooks de navegação do React Router
 
 const FormDevice = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)"); // Verifica se a tela não é mobile
@@ -98,9 +99,11 @@ const FormDevice = () => {
 
             </Box>
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
-                Adicionar
-              </Button>
+              <Link to={"/devices"}>
+                <Button type="submit" color="secondary" variant="contained">
+                  Adicionar
+                </Button>
+              </Link>
             </Box>
           </form>
         )}

@@ -1,5 +1,6 @@
 import { Box, Button, TextField } from "@mui/material"; // Importação de componentes do Material-UI
 import { Formik } from "formik"; // Importação do componente Formik para gerenciar formulários
+import { useNavigate, Link } from 'react-router-dom'; // Importação dos hooks de navegação do React Router
 import * as yup from "yup"; // Importação da biblioteca Yup para validação de esquemas
 import useMediaQuery from "@mui/material/useMediaQuery"; // Hook para verificar a mídia em uso
 import Header from "../../components/header"; // Importação do componente de cabeçalho personalizado
@@ -134,9 +135,11 @@ const UpdateDevice = () => {
             </Box>
             {/* Botão para confirmar a atualização dos campos preenchidos*/}
             <Box display="flex" justifyContent="end" mt="20px">
-              <Button type="submit" color="secondary" variant="contained">
-                Atualizar
-              </Button>
+              <Link to={"/devices"}>
+                <Button type="submit" color="secondary" variant="contained">
+                  Atualizar
+                </Button>
+              </Link>
             </Box>
           </form>
         )}

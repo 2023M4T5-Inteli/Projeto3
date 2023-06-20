@@ -49,11 +49,11 @@ const Delete = (props) => {
 
 const Device = () => {
 
-  const [rowsDevice, setRowsDevice] = useState([]); // Estado para armazenar os dados dos funcionários
-  const url = "https://rd6rmm-3000.csb.app/dispo"; // URL para buscar os dados dos funcionários
+  const [rowsDevice, setRowsDevice] = useState([]); // Estado para armazenar os dados dos DISPOSITIVOS
+  const url = "https://rd6rmm-3000.csb.app/dispo"; // URL para buscar os dados dos DISPOSITIVOS
 
   useEffect(() => {
-    // Hook useEffect para buscar os dados dos funcionários 
+    // Hook useEffect para buscar os dados dos DISPOSITIVOS 
     fetch(url)
       .then(res => res.json())
       .then(data => setRowsDevice(data))
@@ -61,7 +61,7 @@ const Device = () => {
   }, [])
 
   useEffect(() => {
-    // Hook useEffect para exibir os dados dos funcionários no console sempre que houver uma atualização no estado rowsTeam
+    // Hook useEffect para exibir os dados dos DISPOSITIVOS no console sempre que houver uma atualização no estado rowsTeam
     console.log(rowsDevice)
   }, [rowsDevice])
 
@@ -81,7 +81,7 @@ const Device = () => {
       .then(res => {
         if (res.ok) {
           console.log("Excluído com sucesso!");
-          // Atualiza a lista de funcionários removendo o item excluído
+          // Atualiza a lista de DISPOSITIVOS removendo o item excluído
           setRowsDevice(prevRows => prevRows.filter(row => row.id !== id));
         }
         else {
@@ -135,8 +135,8 @@ const Device = () => {
     <Box m="20px">
       <Box height="50px" display="flex" justifyContent="space-between" alignItems="center">
         <Header
-          title="Funcionários"
-          subtitle="Lista de funcionários que utilizarão os dispositivos"
+          title="Dispositivos"
+          subtitle="Lista de dispositivos cadastrados"
         /> 
         <Button onClick={navigateForm} // Renderiza o componente de cabeçalho personalizado
           sx={{
