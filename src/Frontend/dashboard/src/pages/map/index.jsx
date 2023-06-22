@@ -1,13 +1,12 @@
-import { Box, Button, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, IconButton } from "@mui/material";
 import { tokens } from "../../theme";
-import { mockTransactions } from "../../data/mockData";
 import { useEffect, useState } from "react";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 import Header from "../../components/header";
 import BarChart from "../../components/barChart";
 import ProgressCircle from "../../components/progressCircle";
-import InputBase from "@mui/material/InputBase";
-import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
+import MultipleSelect from "../../components/dropdown";
+import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
+
 
 const Map = () => {
   const theme = useTheme();
@@ -39,26 +38,19 @@ const Map = () => {
           backgroundColor={colors.primary[400]}
         >
           <Box
-            mt="25px"
+            mt="20px"
             p="0 30px"
             display="flex "
             justifyContent="space-between"
             alignItems="center"
           >
-            <Box
-             display="flex"
-             backgroundColor={colors.primary[300]}
-             borderRadius="3px"
-            >
-              <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Selecione o Dispositivo" />
-              <IconButton type="button" sx={{ p: 1 }} justifyContent="flex-end">
-                <ArrowDropDownOutlinedIcon />
-              </IconButton>
-              
+            <Box>
+              <MultipleSelect>
+              </MultipleSelect>
             </Box>
           </Box>
           <Box>
-          <Box height="250px" mt="-20px">
+          <Box height="260px" mt="-20px">
             <BarChart isDashboard={true} />
           </Box>
         </Box>
@@ -111,6 +103,9 @@ const Map = () => {
             <Typography color={colors.grey[100]} variant="h5" fontWeight="600">
               Histórico
             </Typography>
+            <IconButton aria-label="delete">
+              <HistoryOutlinedIcon></HistoryOutlinedIcon>
+            </IconButton>
           </Box>
           {historico.map((info) => (
             <Box

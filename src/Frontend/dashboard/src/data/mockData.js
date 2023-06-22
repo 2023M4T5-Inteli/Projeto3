@@ -443,37 +443,37 @@ export const mockTransactions = [
 
 export const mockBarData = [
   {
-    country: "Setor 1",
+    setor: "Setor 1",
     dispositivos: 140,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 2",
+    setor: "Setor 2",
     dispositivos: 29,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 3",
+    setor: "Setor 3",
     dispositivos: 152,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 4",
+    setor: "Setor 4",
     dispositivos: 83,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 5",
+    setor: "Setor 5",
     dispositivos: 35,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 6",
+    setor: "Setor 6",
     dispositivos: 18,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
   {
-    country: "Setor 7",
+    setor: "Setor 7",
     dispositivos: 49,
     dispositivosColor: "hsl(285, 70%, 50%)",
   },
