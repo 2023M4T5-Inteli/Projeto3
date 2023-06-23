@@ -1,12 +1,53 @@
-const express = require('express');
-const sqlite3 = require('sqlite3');
+const express = require("express");
+const sqlite3 = require("sqlite3");
 
 const router = express.Router();
-const db = new sqlite3.Database('pirelli.db');
+const db = new sqlite3.Database("pirelli.db");
 
-// Rota GET para obter todos os usuários
-router.get('/', (req, res) => {
-  const query = 'SELECT * FROM users';
+router.get("/", (req, res) => {
+  const query = "SELECT * FROM users";
+
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error fetching users" });
+    }
+
+    res.json(rows);
+  });
+});
+
+// Rota GET para obter o email de cada usuário
+router.get("/id_empresa", (req, res) => {
+  const query = "SELECT id_empresa FROM users";
+
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error fetching users" });
+    }
+
+    res.json(rows);
+  });
+});
+
+// Rota GET para obter o email de cada usuário
+router.get("/email", (req, res) => {
+  const query = "SELECT email FROM users";
+
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error fetching users" });
+    }
+
+    res.json(rows);
+  });
+});
+
+// Rota GET para obter o telefone de cada usuário
+router.get('/telefone', (req, res) => {
+  const query = 'SELECT telefone FROM users';
 
   db.all(query, (err, rows) => {
     if (err) {
@@ -18,19 +59,33 @@ router.get('/', (req, res) => {
   });
 });
 
+// Rota GET para obter o nome de cada usuário
+router.get("/nome", (req, res) => {
+  const query = "SELECT nome FROM users";
+
+  db.all(query, (err, rows) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: "Error fetching users" });
+    }
+
+    res.json(rows);
+  });
+});
+
 // Rota GET para obter um usuário específico
-router.get('/:id', (req, res) => {
-  const query = 'SELECT * FROM users WHERE id = ?';
+router.get("/:id", (req, res) => {
+  const query = "SELECT * FROM users WHERE id = ?";
   const userId = req.params.id;
 
   db.get(query, [userId], (err, row) => {
     if (err) {
       console.error(err);
-      return res.status(500).json({ error: 'Error fetching user' });
+      return res.status(500).json({ error: "Error fetching user" });
     }
 
     if (!row) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     res.json(row);
@@ -38,16 +93,17 @@ router.get('/:id', (req, res) => {
 });
 
 // Rota POST para criar um novo usuário
-router.post('/', (req, res) => {
+router.post("/", (req, res) => {
   const { nome, id_empresa, email, telefone, senha } = req.body;
 
-  const query = 'INSERT INTO users (nome, id_empresa, email, telefone, senha) VALUES (?, ?, ?, ?, ?)';
+  const query =
+    "INSERT INTO users (nome, id_empresa, email, telefone, senha) VALUES (?, ?, ?, ?, ?)";
   const values = [nome, id_empresa, email, telefone, senha];
 
   db.run(query, values, function (err) {
     if (err) {
       console.error(err);
-      return res.status(500).json({ error: 'Error creating user' });
+      return res.status(500).json({ error: "Error creating user" });
     }
 
     res.json({ id: this.lastID, nome, id_empresa, email, telefone, senha });
@@ -55,21 +111,22 @@ router.post('/', (req, res) => {
 });
 
 // Rota PUT para atualizar um usuário existente
-router.put('/:id', (req, res) => {
+router.put("/:id", (req, res) => {
   const { nome, id_empresa, email, telefone, senha } = req.body;
   const userId = req.params.id;
 
-  const query = 'UPDATE users SET nome = ?, id_empresa = ?, email = ?, telefone = ?, senha = ? WHERE id = ?';
+  const query =
+    "UPDATE users SET nome = ?, id_empresa = ?, email = ?, telefone = ?, senha = ? WHERE id = ?";
   const values = [nome, id_empresa, email, telefone, senha, userId];
 
   db.run(query, values, function (err) {
     if (err) {
       console.error(err);
-      return res.status(500).json({ error: 'Error updating user' });
+      return res.status(500).json({ error: "Error updating user" });
     }
 
     if (this.changes === 0) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     res.json({ id: userId, nome, id_empresa, email, telefone, senha });
@@ -77,24 +134,23 @@ router.put('/:id', (req, res) => {
 });
 
 // Rota DELETE para excluir um usuário
-router.delete('/:id', (req, res) => {
+router.delete("/:id", (req, res) => {
   const userId = req.params.id;
 
-  const query = 'DELETE FROM users WHERE id = ?';
+  const query = "DELETE FROM users WHERE id = ?";
 
   db.run(query, [userId], function (err) {
     if (err) {
       console.error(err);
-      return res.status(500).json({ error: 'Error deleting user' });
+      return res.status(500).json({ error: "Error deleting user" });
     }
 
     if (this.changes === 0) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     res.sendStatus(204);
   });
 });
 
-// Exportando as rotas
 module.exports = router;
