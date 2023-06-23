@@ -5,20 +5,31 @@ import Header from "../../components/header";
 import BarChart from "../../components/barChart";
 import ProgressCircle from "../../components/progressCircle";
 import MultipleSelect from "../../components/dropdown";
-import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
-
+import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 
 const Map = () => {
   const theme = useTheme();
-  const colors = tokens(theme.palette.mode);  
+  const colors = tokens(theme.palette.mode);
   const [historico, setHistorico] = useState([]);
   const url = "https://rd6rmm-3000.csb.app/hist/com-nome";
 
-  useEffect(() => {
+  const fetchHistorico = () => {
     fetch(url)
-      .then(response => response.json())
-      .then(data => setHistorico(data))
-      .catch(error => console.error(error));
+      .then((response) => response.json())
+      .then((data) => setHistorico(data))
+      .catch((error) => console.error(error));
+  };
+
+  useEffect(() => {
+    fetchHistorico(); // Buscar dados do histórico inicialmente
+
+    const interval = setInterval(() => {
+      fetchHistorico(); // Buscar dados do histórico periodicamente
+    }, 5000); // Intervalo de 5 segundos (ajuste conforme necessário)
+
+    return () => {
+      clearInterval(interval); // Limpar o intervalo quando o componente for desmontado
+    };
   }, []);
 
   return (
@@ -122,7 +133,7 @@ const Map = () => {
                   variant="h5"
                   fontWeight="600"
                 >
-                  {info.id_tablet}
+                  Dispositivo: {info.id_tablet}
                 </Typography>
                 <Typography color={colors.grey[100]}>
                   {info.nome}
